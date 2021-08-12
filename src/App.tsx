@@ -1,33 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import QuestionAnswer from './components/questionAnswer';
-import { render } from '@testing-library/react';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { RecoilRoot } from 'recoil';
+import Start from './pages/Start';
+import QuestionAnswer from './pages/Question';
+import Result from './pages/Results';
 
-class App extends React.Component {
-  state = {
-    answerIndex:0,
-    totalScore:0
-  };
 
-  changeTotalScore(score:number) {
-    this.setState({totalScore:this.state.totalScore + score})
-  }
-
-  changeIndex(){
-    this.setState({answerIndex:this.state.totalScore + 1})
-  }
-
-  render(){
-    const totalScore:number = this.state.totalScore;
-    const answerIndex:number = this.state.answerIndex;
-    return (
-      <div>
-        <QuestionAnswer/>  
-        <button onClick={this.changeIndex.bind(this)}></button>
-      </div>
-    )
-  }
+function App() {
+  return (
+    <RecoilRoot>
+    <Router>
+      <Switch>
+        <Route path="/qna/:index">
+          <QuestionAnswer/>
+        </Route>
+        <Route path="/result">
+          <Result/>
+        </Route>
+        <Route path="/">
+          <Start/>
+        </Route>
+      </Switch>
+    </Router>
+    </RecoilRoot>
+  )
 }
 
 export default App;

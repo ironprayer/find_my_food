@@ -1,0 +1,23 @@
+{"data":[
+    {
+        "question":"오늘 밥은 뭐야?",
+        "answer_one":"치킨",
+        "answer_one_score":1,
+        "answer_two":"피자",
+        "answer_two_score":2
+    },
+    {
+        "question":"오늘 커피는 뭐야?",
+        "answer_one":"아메리카노",
+        "answer_one_score":3,
+        "answer_two":"라떼",
+        "answer_two_score":2
+    },
+    {
+        "question":"도레미",
+        "answer_one":"도도",
+        "answer_one_score":1,
+        "answer_two":"도레미",
+        "answer_two_score":2
+    }
+]}
