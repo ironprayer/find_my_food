@@ -3,7 +3,8 @@ import { Link, Redirect, useParams, useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import Questions from '../data/question.json'
 import {totalScoreState} from '../recoil/score'
-
+import QuestionCard from '../components/QuestionCard'
+import AnswerCard from '../components/AnswerCard'
 
 type PathParams = {
     index: string;
@@ -11,13 +12,10 @@ type PathParams = {
 
 const END_QUESTION_INDEX = 3;
 
-
 function Question(){
     const {index} = useParams<PathParams>();
     const questionNumber = Number(index) - 1;
     const _qnas = Questions["data"];
-    const history = useHistory();
-    const [totalScore, setScore] = useRecoilState(totalScoreState);
 
     const isQuACompleted = questionNumber + 1 > END_QUESTION_INDEX
     if(isQuACompleted){
@@ -26,20 +24,12 @@ function Question(){
         )
     }
 
-    const handleAnswerButtonClick = (score:number) => {
-        setScore(totalScore + score);
-        console.log(totalScore);
-        history.push(`/qna/${questionNumber + 2}`)
-    }
-
+    const {question, answer_one, answer_one_score, answer_two, answer_two_score} = _qnas[questionNumber]
     return (
-            <div className="ttt">
-                <h1>질문</h1>
-                <div>{_qnas[questionNumber].question}</div>
-                <h1>대답</h1>
-                <button onClick={handleAnswerButtonClick.bind(undefined, 5)}>{_qnas[questionNumber].answer_one}</button>
-                <h1>대답2</h1>
-                <button>{_qnas[questionNumber].answer_two}</button>
+            <div>
+                <QuestionCard question={question}/>
+                <AnswerCard questionNumber={questionNumber} answer={answer_one} score={answer_one_score}/>
+                <AnswerCard questionNumber={questionNumber} answer={answer_two} score={answer_two_score}/>
             </div>
         )
 }
