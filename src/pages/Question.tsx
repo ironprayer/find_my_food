@@ -17,6 +17,7 @@ function Question(){
     const questionNumber = Number(index) - 1;
     const _qnas = Questions["data"];
 
+
     const isQuACompleted = questionNumber + 1 > END_QUESTION_INDEX
     if(isQuACompleted){
         return(

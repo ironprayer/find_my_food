@@ -1,0 +1,18 @@
+{"data":[
+    {
+        "number":1,
+        "name":"치킨",
+        "description":"치킨은 너무 맛있어요",
+        "link":"https://www.google.com/url?sa=i&url=https%3A%2F%2Fnamu.wiki%2Fw%2F%25EC%25B9%2598%25ED%2582%25A8%3Frev%3D871%253Fnoredirect%253D1&psig=AOvVaw1wLYvaOucQhsVax9wP6VtV&ust=1629019434787000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIjGp7uYsPICFQAAAAAdAAAAABAD",
+        "good_food_number":2,
+        "bad_food_number":3
+    },
+    {
+        "number":2,
+        "name":"피자",
+        "description":"피자는 너무 맛있어요",
+        "link":"https://cdn.dominos.co.kr/admin/upload/goods/20200311_5MGKbxlW.jpg",        
+        "good_food_number":2,
+        "bad_food_number":3
+    }
+]}
