@@ -1,4 +1,20 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+    width:400
+  },
+  media: {
+    height: 140,
+  },
+});
 
 type prop = {
     food:string,
@@ -9,12 +25,25 @@ type prop = {
 
 function FoodCard(prop:prop):JSX.Element{
     const {food, description, imgSrc} = prop;
+    const classes = useStyles();
+
     return(
-        <div>
-            <h1>음식이름 : {food}</h1>
-            <div>{description}</div>
-            <img src={imgSrc}></img>
-        </div>
+       <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={imgSrc}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {food}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>       
     )
 }
 
