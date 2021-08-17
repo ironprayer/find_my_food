@@ -7,6 +7,7 @@ import QuestionCard from '../components/QuestionCard'
 import AnswerCard from '../components/AnswerCard'
 import { makeStyles } from "@material-ui/styles";
 import Button from "@material-ui/core/Button"
+import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
     root: {
@@ -53,9 +54,11 @@ function Question(){
     const {question, answer_one, answer_one_score, answer_two, answer_two_score} = _qnas[questionNumber]
     return (
             <div className={classes.root}>
+                <Grid container direction="column" justifyContent="center" alignItems="center">
                 <QuestionCard question={question}/>
                 <AnswerCard questionNumber={questionNumber} answer={answer_one} score={answer_one_score}/>
                 <AnswerCard questionNumber={questionNumber} answer={answer_two} score={answer_two_score}/>
+                </Grid>
             </div>
         )
 }

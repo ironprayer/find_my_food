@@ -1,15 +1,24 @@
+import { Box, Card, makeStyles } from '@material-ui/core';
 import React from 'react';
 
 type prop = {
     question:string;
 }
 
+const useStyles = makeStyles({
+    root: {
+      minWidth: 275,
+      alignItems:'center' 
+    }
+})
+
 function QuestionCard(prop:prop):JSX.Element{
+    const classes = useStyles();
+
     return (
-        <div>
-            <h1>질문</h1>
-            {prop.question}
-        </div>
+        <Card className={classes.root} variant="outlined">
+            <h3 style={{textAlign:"center"}}>{prop.question}</h3>
+        </Card>
     )
 }
 

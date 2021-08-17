@@ -2,6 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/styles";
 import Button from "@material-ui/core/Button"
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles({
     root: {
@@ -9,7 +10,7 @@ const useStyles = makeStyles({
         justifyContent:'center', 
         alignItems:'center', 
         height: '100vh',
-        backgroundImage:`url(${process.env.PUBLIC_URL + '/cool-background.png'})`
+        backgroundImage:`url(${process.env.PUBLIC_URL + '/background.jpg'})`
       },
     button:{
         background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -27,7 +28,10 @@ function StartPage(){
     const classes = useStyles();
      return (
         <div className={classes.root}>
-            <div><Link to="/qna/1"><button className={classes.button}>나의 음식 찾기 시작하기</button></Link></div>
+            <Grid container direction="column" justifyContent="center" alignItems="center">
+                <h1 style={{color:"white"}}>나의 음식 찾기</h1>
+                <div><Link to="/qna/1"><button className={classes.button}>시 작 하 기</button></Link></div>
+            </Grid>
         </div>
      )
     
