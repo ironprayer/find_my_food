@@ -4,12 +4,17 @@ import Foods from '../data/food.json'
 import { makeStyles } from "@material-ui/styles";
 import Grid from '@material-ui/core/Grid';
 import Button from "@material-ui/core/Button"
+import { useRecoilState } from "recoil";
+import { totalScoreState } from "../recoil/score";
+import SNS from "../components/SNS";
 
 const useStyles = makeStyles({
     root: {
-        display: 'flex',  
-        height: '100vh',
-        backgroundImage:`url(${process.env.PUBLIC_URL + '/cool-background.png'})`
+        display: 'flex',
+        alignItems:"center",
+        justifyContent:"center",
+        backgroundImage:`url(${process.env.PUBLIC_URL + '/background.jpg'})`,
+        backgroundSize:"cover"
       },
     button:{
         background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -27,18 +32,18 @@ const useStyles = makeStyles({
 
 function Results(){
     const _foods = Foods["data"];
-    const {number, name, description, link, good_food_number, bad_food_number} = _foods[1];
+    const [totalScore, _] = useRecoilState(totalScoreState);
+    const resultNumber = totalScore % 2;
+    const {number, name, description, link, good_food_number, bad_food_number} = _foods[resultNumber];
     const classes=useStyles();
 
     return(
         <div className={classes.root}>
-            <Grid container spacing={3} alignItems='center' justifyContent="center" direction="column" >
-            <Grid>
+            <Grid container alignItems='center' justifyContent="center" direction="column" >
                 <FoodCard food={name} description={description} imgSrc={link}/>
-            </Grid>
-            <Grid>
                 <FoodCard food={name} description={description} imgSrc={link}/>
-            </Grid>
+                <FoodCard food={name} description={description} imgSrc={link}/>
+                <SNS/>
             </Grid>
         </div>
 

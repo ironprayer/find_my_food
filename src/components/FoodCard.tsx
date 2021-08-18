@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    marginTop:30,
     width:400
   },
   media: {
@@ -29,7 +30,6 @@ function FoodCard(prop:prop):JSX.Element{
 
     return(
        <Card className={classes.root}>
-        <CardActionArea>
           <CardMedia
             className={classes.media}
             image={imgSrc}
@@ -42,7 +42,6 @@ function FoodCard(prop:prop):JSX.Element{
               {description}
             </Typography>
           </CardContent>
-        </CardActionArea>
       </Card>       
     )
 }

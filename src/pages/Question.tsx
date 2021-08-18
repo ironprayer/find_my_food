@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, Redirect, useParams, useHistory } from 'react-router-dom';
+import { Link, Redirect, useParams, useHistory, useLocation } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import Questions from '../data/question.json'
 import {totalScoreState} from '../recoil/score'
@@ -8,6 +8,7 @@ import AnswerCard from '../components/AnswerCard'
 import { makeStyles } from "@material-ui/styles";
 import Button from "@material-ui/core/Button"
 import { Grid } from '@material-ui/core';
+import { questionNumberState } from '../recoil/questionNumber'
 
 const useStyles = makeStyles({
     root: {
@@ -42,7 +43,7 @@ function Question(){
     const questionNumber = Number(index) - 1;
     const _qnas = Questions["data"];
     const classes = useStyles();
-
+    const [standardQuestionNumber,_] = useRecoilState(questionNumberState);
 
     const isQuACompleted = questionNumber + 1 > END_QUESTION_INDEX
     if(isQuACompleted){
@@ -55,9 +56,9 @@ function Question(){
     return (
             <div className={classes.root}>
                 <Grid container direction="column" justifyContent="center" alignItems="center">
-                <QuestionCard question={question}/>
-                <AnswerCard questionNumber={questionNumber} answer={answer_one} score={answer_one_score}/>
-                <AnswerCard questionNumber={questionNumber} answer={answer_two} score={answer_two_score}/>
+                    <Grid><QuestionCard question={question}/></Grid>
+                    <Grid><AnswerCard questionNumber={questionNumber} answer={answer_one} score={answer_one_score}/></Grid>
+                    <Grid><AnswerCard questionNumber={questionNumber} answer={answer_two} score={answer_two_score}/></Grid>
                 </Grid>
             </div>
         )

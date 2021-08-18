@@ -8,6 +8,7 @@ type prop = {
 const useStyles = makeStyles({
     root: {
       minWidth: 275,
+      marginBottom:20,
       alignItems:'center' 
     }
 })

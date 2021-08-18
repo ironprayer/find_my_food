@@ -12,7 +12,8 @@ function App() {
     <RecoilRoot>
     <Router>
       <Switch>
-        <Route path="/qna/:index">
+        <Route 
+          path="/qna/:index">
           <QuestionAnswer/>
         </Route>
         <Route path="/result">
