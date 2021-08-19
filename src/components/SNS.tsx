@@ -1,9 +1,16 @@
+import React, { useCallback, useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
-import React from "react";
+import {Helmet} from "react-helmet";
 
-type prop = {
-    
+const KAKAO_SDK = "https://developers.kakao.com/sdk/js/kakao.js"
+
+declare global{
+  interface Window{
+    Kakao:any;
+  }
 }
+
+const { Kakao } = window;
 
 const useStyles = makeStyles({
     root:{
@@ -20,12 +27,42 @@ const useStyles = makeStyles({
     }
 })
 
-function SNS(prop:prop):JSX.Element{
+function SNS():JSX.Element{
     const classes = useStyles();
+
+    useEffect(() =>{
+      try{
+        Kakao.init("122a86b95b6c469c977d78e840b5d0b1")
+      }catch(error){
+        
+      }
+    })
+
+    
+    const shareKakao = () => {
+      // 카카오링크 버튼 생성
+      Kakao.Link.createDefaultButton({
+        container: '#shareKakao', // 카카오공유버튼ID
+        objectType: 'feed',
+        content: {
+          title: "나의 음식 찾기",
+          description: "당신의 음식 찾기 결과", // 보여질 설명
+          imageUrl: "211.54.71.37:8888/result", // 콘텐츠 URL
+          link: {
+             mobileWebUrl: "211.54.71.37:8888/result",
+             webUrl: "211.54.71.37:8888/result"
+          }
+        }
+        
+      });
+    }
+    
+    
 
     return(
         <div>
-            <a className={classes.linkIcon} style={{fontSize:"14px", backgroundImage:`url(${process.env.PUBLIC_URL + '/images/icon-facebook.png'})`}}></a>
+
+            <div id="shareKakao" className={classes.linkIcon} onClick={shareKakao} style={{fontSize:"14px", backgroundImage:`url(${process.env.PUBLIC_URL + '/images/icon-facebook.png'})`}}></div>
             <a className={classes.linkIcon} style={{backgroundImage:`url(${process.env.PUBLIC_URL + '/images/icon-kakao.png'})`}}></a>
             <a className={classes.linkIcon} style={{backgroundImage:`url(${process.env.PUBLIC_URL + '/images/icon-twitter.png'})`}}></a>
         </div>
@@ -33,3 +70,7 @@ function SNS(prop:prop):JSX.Element{
 }
 
 export default SNS;
+
+function componentDidMount() {
+  throw new Error("Function not implemented.");
+}
