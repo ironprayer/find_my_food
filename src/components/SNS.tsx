@@ -32,7 +32,7 @@ function SNS():JSX.Element{
 
     useEffect(() =>{
       try{
-        Kakao.init("122a86b95b6c469c977d78e840b5d0b1")
+        Kakao.init("#")
       }catch(error){
         
       }
@@ -47,10 +47,10 @@ function SNS():JSX.Element{
         content: {
           title: "나의 음식 찾기",
           description: "당신의 음식 찾기 결과", // 보여질 설명
-          imageUrl: "211.54.71.37:8888/result", // 콘텐츠 URL
+          imageUrl: "#", // 콘텐츠 URL
           link: {
-             mobileWebUrl: "211.54.71.37:8888/result",
-             webUrl: "211.54.71.37:8888/result"
+             mobileWebUrl: "#",
+             webUrl: "#"
           }
         }
         
