@@ -39,12 +39,12 @@ function SNS():JSX.Element{
     const classes = useStyles();
 
     
-    // useEffect(() =>{
-    //   try{
-    //     Kakao.init("#")
-    //   }catch(error){
-          //   }
-    // })
+    useEffect(() =>{
+      try{
+        Kakao.init("#")
+      }catch(error){
+            }
+    })
 
     // 아이디 구해서 테스트 필요
     const shareFacebook = () => {
@@ -53,24 +53,24 @@ function SNS():JSX.Element{
   
     }
 
-    const shareKakao = () => {}
-    // const shareKakao = () => {
-    //   // 카카오링크 버튼 생성
-    //   Kakao.Link.createDefaultButton({
-    //     container: '#shareKakao', // 카카오공유버튼ID
-    //     objectType: 'feed',
-    //     content: {
-    //       title: "나의 음식 찾기",
-    //       description: "당신의 음식 찾기 결과", // 보여질 설명
-    //       imageUrl: "#", // 콘텐츠 URL
-    //       link: {
-    //          mobileWebUrl: "#",
-    //          webUrl: "#"
-    //       }
-    //     }
+    //const shareKakao = () => {}
+    const shareKakao = () => {
+      // 카카오링크 버튼 생성
+      Kakao.Link.createDefaultButton({
+        container: '#shareKakao', // 카카오공유버튼ID
+        objectType: 'feed',
+        content: {
+          title: "나의 음식 찾기",
+          description: "당신의 음식 찾기 결과", // 보여질 설명
+          imageUrl: "#", // 콘텐츠 URL
+          link: {
+             mobileWebUrl: "#",
+             webUrl: "#"
+          }
+        }
         
-    //   });
-    // }
+      });
+    }
 
 
     // 아이디 구해서 테스트 필요
