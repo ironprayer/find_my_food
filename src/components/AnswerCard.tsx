@@ -32,6 +32,7 @@ function AnswerCard(prop:prop):JSX.Element{
         const nextQuestionNumber = questionNumber + 2;
         setScore(totalScore + score);
         setQuestionNumber(questionNumber);
+        console.log(totalScore);
         history.push(`/qna/${nextQuestionNumber}`)
     }    
 
